@@ -66,6 +66,7 @@ public class BlackjackDealer extends Player implements Dealer {
         this.addCard(cards.dealDown());
     }
 
+    @Override
     protected void stopPlay(Dealer dealer) {
     }
 
