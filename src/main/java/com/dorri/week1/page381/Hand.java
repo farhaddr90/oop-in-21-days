@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-    private List<Card> cards = new ArrayList<Card>();
+    private final List<Card> cards = new ArrayList<>();
     private static final int BLACKJACK = 21;
 
     public void addCard(Card card) {
@@ -31,5 +31,14 @@ public class Hand {
         for (Card card : cards) {
             card.faceUp();
         }
+    }
+
+    public void reset() {
+        cards.clear();
+    }
+
+    @Override
+    public String toString() {
+        return cards.toString();
     }
 }

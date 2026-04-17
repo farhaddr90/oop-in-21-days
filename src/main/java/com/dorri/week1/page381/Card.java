@@ -3,8 +3,8 @@ package com.dorri.week1.page381;
 public class Card {
 
     private boolean faceUp;
-    private Suit suit;
-    private Rank rank;
+    private final Suit suit;
+    private final Rank rank;
 
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
@@ -12,7 +12,20 @@ public class Card {
     }
 
     public enum Suit {
-        DIAMOND, HEART, CLUB, SPADE;
+        DIAMOND("♦"),
+        HEART("♥"),
+        CLUB("♣"),
+        SPADE("♠");
+
+        private final String symbol;
+
+        Suit(String symbol) {
+            this.symbol = symbol;
+        }
+
+        public String getSymbol() {
+            return symbol;
+        }
     }
 
     public enum Rank {
@@ -30,8 +43,8 @@ public class Card {
         Queen("Queen", 10),
         King("King", 10);
 
-        private String rank;
-        private int value;
+        private final String rank;
+        private final int value;
 
         Rank(String rank, int value) {
             this.rank = rank;
@@ -69,10 +82,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-               "faceUp=" + faceUp +
-               ", suit=" + suit +
-               ", rank=" + rank +
-               '}';
+        String result;
+        if (isFaceUp()) {
+            result = "(%s%s)".formatted(getRank().getRank(), getSuit().getSymbol());
+        } else {
+            result = "(card)";
+        }
+        return result;
     }
 }

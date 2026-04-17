@@ -8,6 +8,7 @@ public class Deck {
     List<Card> cards = new ArrayList<>();
 
     public Deck() {
+        buildCards();
     }
 
     public void buildCards() {
