@@ -6,17 +6,18 @@ import java.util.List;
 public class Hand {
 
     private final List<Card> cards = new ArrayList<>();
+    private static final int BLACKJACK = 21;
 
     public void addCard(Card card) {
         cards.add(card);
     }
 
     public boolean bust() {
-        return total() > 21;
+        return total() > BLACKJACK;
     }
 
     public boolean blackjack() {
-        return total() == 21;
+        return total() == BLACKJACK;
     }
 
     public int total() {
@@ -31,7 +32,7 @@ public class Hand {
             }
         }
 
-        while (total > 21 && aceCount > 0) {
+        while (total > BLACKJACK && aceCount > 0) {
             total -= 10; // converts one Ace from 11 to 1
             aceCount--;
         }

@@ -39,12 +39,23 @@ public abstract class Player {
         return hand.blackjack();
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public Hand getHand() {
+    protected Hand getHand() {
         return hand;
+    }
+
+    public void play(Dealer dealer) {
+        while (!isBusted() && !isBlackjack() && hit()) {
+            dealer.hit(this);
+        }
+        stopPlay(dealer);
+    }
+
+    protected void stopPlay(Dealer dealer) {
+        dealer.passTurn();
     }
 
     @Override

@@ -26,15 +26,11 @@ public class Main {
             deckPile.shuffle(new Random());
         }
         Hand dealerHand = new Hand();
-        Dealer dealer = new Dealer("Dealer", dealerHand, deckPile);
+        BlackjackDealer dealer = new BlackjackDealer("Dealer", dealerHand, deckPile);
         dealer.addListener(console);
         dealer.addPlayer(farhad);
         dealer.addPlayer(bob);
 
-        dealer.deal();
-        ///  ############################################################################
-
-        dealer.startGame();
-
+        dealer.newGame();
     }
 }

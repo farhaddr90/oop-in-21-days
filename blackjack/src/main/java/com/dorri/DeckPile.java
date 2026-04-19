@@ -15,22 +15,33 @@ public class DeckPile {
     }
 
     public Card dealUp() {
-        Card card = cards.get(index++);
-        card.faceUp();
+        Card card = deal();
+        if (card != null) {
+            card.faceUp();
+        }
         return card;
     }
 
     public Card dealDown() {
-        Card card = cards.get(index++);
-        card.faceDown();
+        Card card = deal();
+        if (card != null) {
+            card.faceDown();
+        }
         return card;
+    }
+
+    private Card deal() {
+        if (index < cards.size()) {
+            return cards.get(index++);
+        }
+        return null;
     }
 
     public void shuffle(Random random) {
         Collections.shuffle(cards, random);
     }
 
-    public void reset(){
+    public void reset() {
         cards.clear();
         index = 0;
     }
