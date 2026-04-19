@@ -32,5 +32,9 @@ public class Main {
         dealer.addPlayer(bob);
 
         dealer.deal();
+        ///  ############################################################################
+
+        dealer.startGame();
+
     }
 }

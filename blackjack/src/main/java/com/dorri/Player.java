@@ -16,7 +16,7 @@ public abstract class Player {
 
     protected abstract boolean hit();
 
-    private void notifyListeners() {
+    protected void notifyListeners() {
         for (PlayerListener listener : listeners) {
             listener.handChanged(this);
         }
@@ -29,6 +29,22 @@ public abstract class Player {
 
     public void addListener(PlayerListener listener) {
         listeners.add(listener);
+    }
+
+    public boolean isBusted() {
+        return hand.bust();
+    }
+
+    public boolean isBlackjack() {
+        return hand.blackjack();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Hand getHand() {
+        return hand;
     }
 
     @Override

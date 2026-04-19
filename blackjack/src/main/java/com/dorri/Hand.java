@@ -15,6 +15,10 @@ public class Hand {
         return total() > 21;
     }
 
+    public boolean blackjack() {
+        return total() == 21;
+    }
+
     public int total() {
         int total = 0;
         int aceCount = 0;
@@ -33,6 +37,12 @@ public class Hand {
         }
 
         return total;
+    }
+
+    public void turnOver() {
+        for (Card card : cards) {
+            card.faceUp();
+        }
     }
 
     @Override
