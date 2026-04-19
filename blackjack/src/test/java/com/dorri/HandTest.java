@@ -2,6 +2,9 @@ package com.dorri;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HandTest {
@@ -88,4 +91,28 @@ public class HandTest {
         assertFalse(hand.bust());
     }
 
+    @Test
+    void testToString() {
+
+        Card card1 = new Card(Card.Rank.ACE, Card.Suit.SPADES);
+        Card card2 = new Card(Card.Rank.TWO, Card.Suit.HEARTS);
+        Card card3 = new Card(Card.Rank.THREE, Card.Suit.CLUBS);
+        Card card4 = new Card(Card.Rank.FOUR, Card.Suit.DIAMONDS);
+        List<Card> cards = Arrays.asList(card1, card2, card3, card4);
+
+        String expected = "{";
+        for (Card card : cards) {
+            card.faceUp();
+            expected += card + ",";
+        }
+        expected = expected.substring(0, expected.length() - 1);
+        expected += "}";
+
+        Hand hand = new Hand();
+        for (Card card : cards) {
+            card.faceUp();
+            hand.addCard(card);
+        }
+        assertEquals(expected, hand.toString());
+    }
 }

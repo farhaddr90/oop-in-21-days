@@ -34,4 +34,14 @@ public class Hand {
 
         return total;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer("{");
+        for (Card card : cards) {
+            sb.append(card).append(",");
+        }
+        sb.delete(sb.length() - 1, sb.length()).append("}");
+        return sb.toString();
+    }
 }
