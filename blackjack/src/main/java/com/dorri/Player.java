@@ -14,8 +14,6 @@ public abstract class Player {
         this.hand = hand;
     }
 
-    protected abstract boolean hit();
-
     protected void notifyListeners() {
         for (PlayerListener listener : listeners) {
             listener.handChanged(this);
@@ -47,6 +45,13 @@ public abstract class Player {
         return hand;
     }
 
+    @Override
+    public String toString() {
+        return name + " " + hand;
+    }
+
+    protected abstract boolean hit();
+
     public void play(Dealer dealer) {
         while (!isBusted() && !isBlackjack() && hit()) {
             dealer.hit(this);
@@ -56,10 +61,5 @@ public abstract class Player {
 
     protected void stopPlay(Dealer dealer) {
         dealer.passTurn();
-    }
-
-    @Override
-    public String toString() {
-        return name + " " + hand;
     }
 }
