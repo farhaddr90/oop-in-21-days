@@ -1,4 +1,4 @@
-package statpatern;
+package statpatern.delivery;
 
 public class Package {
     private State state;

@@ -1,4 +1,4 @@
-package statpatern;
+package statpatern.delivery;
 
 public interface State {
     void prev(Package pkg);
